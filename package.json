@@ -24,7 +24,7 @@
     "optimist": "~0.3"
   },
   "optionalDependencies": {
-    "uglify-js": "~2.3"
+    "uglify-js": "~2.6"
   },
   "devDependencies": {
     "async": "~0.2.9",
