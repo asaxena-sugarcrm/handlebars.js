@@ -22,4 +22,23 @@ describe('security issues', function() {
                 new TestClass(), 'xyz');
         });
     });
+
+    describe('GH-1595: dangerous properties', function() {
+        var templates = [
+            '{{__defineGetter__}}',
+            '{{__defineSetter__}}',
+            '{{__lookupGetter__}}',
+            '{{__proto__}}',
+        ];
+
+        templates.forEach(function(template) {
+            describe('access should be denied to ' + template, function() {
+                it('by default', function() {
+                    shouldThrow(function() {
+                        CompilerContext.compile(template);
+                    }, Error);
+                });
+            });
+        });
+    });
 });
